@@ -1,6 +1,6 @@
 function autocomplete (inp, arr) {
     var currentFocus;
-    inp.addEventListener("input", function(e)) {
+    inp.addEventListener("input", function(e){
         var a, b, i, val = this.value;
         closeAllLists();
         if (!val) { return false;}
@@ -18,5 +18,13 @@ function autocomplete (inp, arr) {
                 b.innerHTML += arr[i].substr(val.length);
 
                 b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                b.addEventListener("click", function(e) {
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    closeAllLists();
+                });
+                a.appendChild(b);
+              }
+            }
+        });
     }
 }
