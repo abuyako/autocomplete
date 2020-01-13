@@ -37,7 +37,7 @@ function autocomplete (inp, arr) {
             } else if (e.keyCode == 13) {
                 e.preventDefault();
                 if (currentFocus > -1) {
-                      /*and simulate a click on the "active" item:*/
+                      
           if (x) x[currentFocus].click();
         }
       }
@@ -47,5 +47,17 @@ function autocomplete (inp, arr) {
     removeActive(x);
     if (currentFocus >= x.length) currentFocus = 0;
     if (currentFocus < 0) currentFocus = (x.length - 1);
+      for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
     }
 }
