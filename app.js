@@ -33,5 +33,15 @@ function autocomplete (inp, arr) {
                 currentFocus++;
                 addActive(x);
             } else if (e.keyCode == 38) {
+                addActive(x);
+            } else if (e.keyCode == 13) {
+                e.preventDefault();
+                if (currentFocus > -1) {
+                      /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
     }
 }
